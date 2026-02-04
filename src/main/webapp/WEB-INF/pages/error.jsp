@@ -17,7 +17,7 @@
     <div class="card shadow p-4">
         <h2 class="text-center mb-4 text-danger">❌ An Error Occurred</h2>
         <div class="alert alert-danger text-center" role="alert">
-            <strong>Error Details:</strong> ${errorMessage}
+            <strong>Error Details:</strong> ${errorMsg}
         </div>
     </div>
 
