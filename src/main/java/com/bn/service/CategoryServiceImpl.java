@@ -56,5 +56,18 @@
 					throw new RuntimeException("Category not found with id: " + category.getCategoryId());
 				}
 		}
+
+		@Override
+		public void deleteCategory(Long categoryId) 
+		{
+				Optional<Category> byId = categoryRepo.findById(categoryId);
+				if(byId.isPresent())
+				{
+					categoryRepo.deleteById(categoryId);
+				}
+				else {
+					throw new RuntimeException("Category not found with id: " + categoryId);
+				}
+		}
 	
 	}

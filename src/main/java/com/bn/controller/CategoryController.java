@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bn.dto.CategoryDTO;
 import com.bn.entity.Category;
@@ -40,11 +41,19 @@ public class CategoryController {
 
 
 	@PostMapping("/categoryUpdate")
-	public String updateCategory(@ModelAttribute Category category,Map<String, Object> model) 
+	public String updateCategory(@ModelAttribute Category category,RedirectAttributes redirectAttributes) 
 	{
-//			System.out.println("Updating category: " + category);
 			categorySer.updateCategory(category);
+			redirectAttributes.addFlashAttribute("message", "Category updated successfully");
 			return "redirect:/category/categories";
+	}
+	
+	@GetMapping("/categoryDelete")
+	public String deleteCategory(@RequestParam Long categoryId,RedirectAttributes redirectAttributes) 
+	{
+		categorySer.deleteCategory(categoryId);
+		redirectAttributes.addFlashAttribute("message", "Category deleted successfully");
+		return "redirect:/category/categories";
 	}
 	
 }

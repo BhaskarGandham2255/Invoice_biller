@@ -12,4 +12,6 @@ public interface CategoryService
 	public Category getCategoryById(Long categoryId);
 
 	public void updateCategory(Category category);
+	
+	public void deleteCategory(Long categoryId);
 }
