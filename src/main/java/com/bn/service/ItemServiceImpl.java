@@ -18,25 +18,18 @@ public class ItemServiceImpl implements ItemService {
 
 	@Override
 	public List<ItemWithCategoryDTO> getAllItems() {
-		try {
-			List<ItemWithCategoryDTO> items = new ArrayList<ItemWithCategoryDTO>();
-			List<Item> allItems = itemRepo.findAll();
-			if (allItems.size() > 0) {
-				for (int i = 0; i < allItems.size(); i++) {
-					Item item = allItems.get(i);
-					ItemWithCategoryDTO itemWithCategoryDTO = new ItemWithCategoryDTO(item.getItemId(),
-							item.getItemName(), item.getPrice(), item.getDescription(), item.getAvailable(),
-							item.getCategory().getCategoryName());
-					items.add(itemWithCategoryDTO);
-				}
+		List<ItemWithCategoryDTO> items = new ArrayList<ItemWithCategoryDTO>();
+		List<Item> allItems = itemRepo.findAll();
+		if (allItems.size() > 0) {
+			for (int i = 0; i < allItems.size(); i++) {
+				Item item = allItems.get(i);
+				ItemWithCategoryDTO itemWithCategoryDTO = new ItemWithCategoryDTO(item.getItemId(), item.getItemName(),
+						item.getPrice(), item.getDescription(), item.getAvailable(),
+						item.getCategory().getCategoryName());
+				items.add(itemWithCategoryDTO);
 			}
-			return items;
-
-		} catch (Exception e) 
-		{
-			e.printStackTrace();
-			throw e;
 		}
+		return items;
 	}
 
 }

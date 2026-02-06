@@ -19,16 +19,10 @@ public class ItemController {
 
 	@GetMapping("/items")
 	public String getAllItems(Map<String, Object> model) {
-		try {
-			List<ItemWithCategoryDTO> allItems = iterSer.getAllItems();
-			model.put("items", allItems);
-			allItems.forEach(i->System.out.println(i));
-			return "items";
-		} catch (Exception e)
-		{
-			model.put("errorMsg", e.getMessage());
-			return "forward:error";
-		}
+		List<ItemWithCategoryDTO> allItems = iterSer.getAllItems();
+		model.put("items", allItems);
+		allItems.forEach(i -> System.out.println(i));
+		return "items";
 	}
 
 }
