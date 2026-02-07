@@ -15,6 +15,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.bn.dto.CategoryDTO;
 import com.bn.entity.Category;
 import com.bn.service.CategoryService;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
@@ -55,5 +57,20 @@ public class CategoryController {
 		redirectAttributes.addFlashAttribute("message", "Category deleted successfully");
 		return "redirect:/category/categories";
 	}
+
+	@GetMapping("/categoryAdd")
+	public String addCategoryForm()
+	{
+		return "category-add";
+	}
+
+	@PostMapping("/categoryAdd")
+	public String addCategory(@ModelAttribute Category category,RedirectAttributes redirectAttributes) 
+	{
+			categorySer.saveCategory(category);
+			redirectAttributes.addFlashAttribute("message", "Category added successfully");
+			return "redirect:/category/categories";
+	}
+	
 	
 }

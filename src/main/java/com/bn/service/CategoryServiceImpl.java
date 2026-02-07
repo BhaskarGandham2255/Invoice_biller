@@ -69,5 +69,11 @@
 					throw new RuntimeException("Category not found with id: " + categoryId);
 				}
 		}
+
+		@Override
+		public void saveCategory(Category category) 
+		{
+				categoryRepo.save(category);
+		}
 	
 	}
