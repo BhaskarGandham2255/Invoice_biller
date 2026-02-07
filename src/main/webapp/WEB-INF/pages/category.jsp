@@ -113,6 +113,9 @@ body {
 				<div class="text-center mt-4">
 					<a href="${pageContext.request.contextPath}/menu/items"
 						class="btn btn-outline-secondary"> ← Back to Items </a>
+
+					<a href="${pageContext.request.contextPath}/category/categoryAdd"
+						class="btn btn-outline-primary ms-2"> + Add New Category </a>
 				</div>
 
 			</div>
