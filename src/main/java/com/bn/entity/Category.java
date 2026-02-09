@@ -21,16 +21,15 @@ import lombok.ToString;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @ToString(exclude = "items")
-public class Category 
-{
+public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long categoryId;
-		
+
 	@NonNull
 	private String categoryName;
-	
+
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Item> items;
-		
+
 }
