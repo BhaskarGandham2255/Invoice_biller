@@ -69,7 +69,12 @@
                 </c:forEach>
             </tbody>
         </table>
-
+		
+		
+		<div class="text-center">
+			<a href="${pageContext.request.contextPath}/category/categories" class="btn btn-outline-secondary text-center me-4">Add New Item	 </a>
+			<a href="${pageContext.request.contextPath}/category/categories" class="btn btn-outline-secondary text-center">Categories  ->  </a>
+		</div>
     </div>
 
 </div>

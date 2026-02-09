@@ -12,7 +12,7 @@ import com.bn.dto.ItemWithCategoryDTO;
 import com.bn.service.ItemService;
 
 @Controller
-@RequestMapping("/menu")
+@RequestMapping("/item")
 public class ItemController {
 	@Autowired
 	private ItemService iterSer;
