@@ -29,6 +29,17 @@
 </head>
 <body>
 
+<!-- ✅ Success Alert -->
+	<c:if test="${not empty message}">
+		<div
+			class="alert alert-success alert-dismissible fade show text-center 
+       		position-fixed bottom-0 end-0 m-4"
+			style="z-index: 9999; min-width: 300px;" role="alert">
+			<i class="fa-solid fa-circle-check me-2"></i> ${message}
+			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+		</div>
+	</c:if>
+	
 <div class="container mt-5">
 
     <div class="card shadow p-4">
@@ -72,7 +83,7 @@
 		
 		
 		<div class="text-center">
-			<a href="${pageContext.request.contextPath}/category/categories" class="btn btn-outline-secondary text-center me-4">Add New Item	 </a>
+			<a href="${pageContext.request.contextPath}/item/addItem" class="btn btn-outline-secondary text-center me-4">Add New Item	 </a>
 			<a href="${pageContext.request.contextPath}/category/categories" class="btn btn-outline-secondary text-center">Categories  ->  </a>
 		</div>
     </div>
