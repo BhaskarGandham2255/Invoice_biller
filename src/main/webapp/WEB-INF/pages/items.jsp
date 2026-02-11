@@ -8,6 +8,9 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
     <style>
         body {
             background-color: #f8f9fa;
@@ -53,6 +56,7 @@
                     <th>Category</th>
                     <th>Price (₹)</th>
                     <th>Status</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -76,6 +80,11 @@
                                 </c:otherwise>
                             </c:choose>
                         </td>
+                        <td><a href="${pageContext.request.contextPath}/item/deleteItem?itemId=${item.itemId}"
+											class="text-danger action-btn"
+											onclick="return confirm('Are you sure you want to delete this item?');">
+												<i class="fa-solid fa-trash"></i>
+										</a></td>
                     </tr>
                 </c:forEach>
             </tbody>

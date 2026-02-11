@@ -17,7 +17,6 @@ import com.bn.entity.Category;
 import com.bn.service.CategoryService;
 
 
-
 @Controller
 @RequestMapping("/category")
 public class CategoryController {

@@ -46,4 +46,11 @@ public class ItemServiceImpl implements ItemService {
 		itemRepo.save(new Item(null, item.getItemName(), item.getItemPrice(), item.getItemDescription(), item.getAvailable(), byId.get()));
 	}
 
+	@Override
+	public void deleteItem(Long itemId) 
+	{
+		itemRepo.findById(itemId).orElseThrow(() -> new RuntimeException("Item not found with id: " + itemId));
+		itemRepo.deleteById(itemId);
+	}
+
 }

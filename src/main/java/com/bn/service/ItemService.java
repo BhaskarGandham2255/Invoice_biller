@@ -10,4 +10,6 @@ public interface ItemService
 	public List<ItemWithCategoryDTO> getAllItems();
 	
 	public void saveItem(AddItemRequestDTO item);
+
+	public void deleteItem(Long itemId);
 }

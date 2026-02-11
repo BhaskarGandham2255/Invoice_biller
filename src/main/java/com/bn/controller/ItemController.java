@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bn.dto.AddItemRequestDTO;
@@ -21,20 +22,15 @@ import com.bn.service.ItemService;
 @RequestMapping("/item")
 public class ItemController {
 
-    private final GlobalExceptionHandler globalExceptionHandler;
 	@Autowired
-	private ItemService iterSer;
+	private ItemService itemSer;
 	
 	@Autowired
 	private CategoryService catSer;
 
-    ItemController(GlobalExceptionHandler globalExceptionHandler) {
-        this.globalExceptionHandler = globalExceptionHandler;
-    }
-
 	@GetMapping("/items")
 	public String getAllItems(Map<String, Object> model) {
-		List<ItemWithCategoryDTO> allItems = iterSer.getAllItems();
+		List<ItemWithCategoryDTO> allItems = itemSer.getAllItems();
 		model.put("items", allItems);
 		allItems.forEach(i -> System.out.println(i));
 		return "items";
@@ -50,9 +46,17 @@ public class ItemController {
 	@PostMapping("/addItem")
 	public String addItem(@ModelAttribute AddItemRequestDTO item,RedirectAttributes redirectAttributes)
 	{
-	   	iterSer.saveItem(item); 
+	   	itemSer.saveItem(item); 
 	   	redirectAttributes.addFlashAttribute("message", "Item added successfully!");
 	    return "redirect:/item/items";
+	}
+
+	@GetMapping("/deleteItem")
+	public String deleteItem(@RequestParam Long itemId, RedirectAttributes redirectAttributes)
+	{
+	    itemSer.deleteItem(itemId);
+	    redirectAttributes.addFlashAttribute("message", "Item deleted successfully!");
+		return "redirect:/item/items";
 	}
 
 }
