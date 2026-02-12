@@ -14,7 +14,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bn.dto.AddItemRequestDTO;
 import com.bn.dto.ItemWithCategoryDTO;
-import com.bn.exception.GlobalExceptionHandler;
 import com.bn.service.CategoryService;
 import com.bn.service.ItemService;
 
@@ -58,5 +57,14 @@ public class ItemController {
 	    redirectAttributes.addFlashAttribute("message", "Item deleted successfully!");
 		return "redirect:/item/items";
 	}
+	
+	@GetMapping("/updateItem")
+	public String updateItemForm(@RequestParam Long itemId, Map<String, Object> model)
+	{
+		model.put("item", itemSer.getItemById(itemId));
+		model.put("categories", catSer.getAllCategory());
+		return "update-item";
+	}
+	
 
 }

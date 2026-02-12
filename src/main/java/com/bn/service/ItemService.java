@@ -12,4 +12,6 @@ public interface ItemService
 	public void saveItem(AddItemRequestDTO item);
 
 	public void deleteItem(Long itemId);
+	
+	public ItemWithCategoryDTO getItemById(Long itemId);
 }

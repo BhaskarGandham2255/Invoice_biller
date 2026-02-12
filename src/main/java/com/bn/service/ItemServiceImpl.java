@@ -32,7 +32,7 @@ public class ItemServiceImpl implements ItemService {
 				Item item = allItems.get(i);
 				ItemWithCategoryDTO itemWithCategoryDTO = new ItemWithCategoryDTO(item.getItemId(), item.getItemName(),
 						item.getPrice(), item.getDescription(), item.getAvailable(),
-						item.getCategory().getCategoryName());
+						item.getCategory().getCategoryName(),item.getCategory().getCategoryId());
 				items.add(itemWithCategoryDTO);
 			}
 		}
@@ -52,5 +52,22 @@ public class ItemServiceImpl implements ItemService {
 		itemRepo.findById(itemId).orElseThrow(() -> new RuntimeException("Item not found with id: " + itemId));
 		itemRepo.deleteById(itemId);
 	}
+
+	@Override
+	public ItemWithCategoryDTO getItemById(Long itemId) {
+		Optional<Item> byId = itemRepo.findById(itemId);
+		if(byId.isPresent())
+		{
+			Item item = byId.get();
+			return new ItemWithCategoryDTO(item.getItemId(), item.getItemName(),
+					item.getPrice(), item.getDescription(), item.getAvailable(),
+					item.getCategory().getCategoryName(),item.getCategory().getCategoryId());
+		}
+		else
+		{
+			throw new RuntimeException("Item not found with id: " + itemId);
+		}
+	}
+
 
 }
