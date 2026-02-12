@@ -13,4 +13,5 @@ public class ItemWithCategoryDTO {
     private String description;
     private Boolean available;
     private String categoryName;
+    private Long categoryId;
 }
