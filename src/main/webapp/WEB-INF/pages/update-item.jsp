@@ -12,18 +12,6 @@
 	rel="stylesheet">
 </head>
 <body style="background-color: #f4f6f9;">
-	
-	<!--Alert -->
-	<c:if test="${not empty message}">
-		<div
-			class="alert alert-danger alert-dismissible fade show text-center 
-       		position-fixed bottom-0 end-0 m-4"
-			style="z-index: 9999; min-width: 300px;" role="alert">
-			<i class="fa-solid fa-circle-check me-2"></i> ${message}
-			<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-		</div>
-	</c:if>
-
 
 	<div class="container d-flex justify-content-center align-items-center"
 		style="min-height: 100vh;">
