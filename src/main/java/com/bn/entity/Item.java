@@ -22,8 +22,10 @@ public class Item
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long itemId;
 	
+	@Column(unique = true, nullable = false)
 	private String itemName;
 	
+	@Column(nullable = false)
 	private Double price;
 	
 	@Column(length = 500)

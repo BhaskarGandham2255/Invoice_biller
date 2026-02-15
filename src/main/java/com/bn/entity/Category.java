@@ -3,6 +3,7 @@ package com.bn.entity;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +28,7 @@ public class Category {
 	private Long categoryId;
 
 	@NonNull
+	@Column(unique = true, nullable = false)
 	private String categoryName;
 
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, orphanRemoval = true)
