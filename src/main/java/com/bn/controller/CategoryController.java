@@ -65,6 +65,12 @@ public class CategoryController {
 	@PostMapping("/categoryAdd")
 	public String addCategory(@ModelAttribute Category category,RedirectAttributes redirectAttributes) 
 	{
+			Category exists = categorySer.findByName(category.getCategoryName());
+			if(exists != null)
+			{
+				redirectAttributes.addFlashAttribute("message", "Category with name "+category.getCategoryName()+" already exists!");
+				return "redirect:/category/categoryAdd";
+			}
 			categorySer.saveCategory(category);
 			redirectAttributes.addFlashAttribute("message", "Category added successfully");
 			return "redirect:/category/categories";

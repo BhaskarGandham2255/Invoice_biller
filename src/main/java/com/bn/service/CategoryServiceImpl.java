@@ -75,5 +75,11 @@
 		{
 				categoryRepo.save(category);
 		}
+
+		@Override
+		public Category findByName(String categoryName) {
+			Category category = categoryRepo.findByCategoryName(categoryName);
+			return category;
+		}
 	
 	}
