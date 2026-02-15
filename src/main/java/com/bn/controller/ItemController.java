@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.bn.dto.AddItemRequestDTO;
 import com.bn.dto.ItemWithCategoryDTO;
+import com.bn.entity.Item;
 import com.bn.service.CategoryService;
 import com.bn.service.ItemService;
 
@@ -45,6 +46,12 @@ public class ItemController {
 	@PostMapping("/addItem")
 	public String addItem(@ModelAttribute AddItemRequestDTO item,RedirectAttributes redirectAttributes)
 	{
+		Item exists = itemSer.findByName(item.getItemName());
+		if(exists != null)
+		{
+			redirectAttributes.addFlashAttribute("message", "Item with Name " + item.getItemName() + " already exists!");
+		    return "redirect:/item/addItem";
+		}
 	   	itemSer.saveItem(item); 
 	   	redirectAttributes.addFlashAttribute("message", "Item added successfully!");
 	    return "redirect:/item/items";

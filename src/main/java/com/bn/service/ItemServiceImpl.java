@@ -90,5 +90,12 @@ public class ItemServiceImpl implements ItemService {
 		itemRepo.save(existingItem);
 	}
 
+	@Override
+	public Item findByName(String itemName) 
+	{
+		Item item = itemRepo.findByItemName(itemName);		
+		return item;
+	}
+
 
 }
