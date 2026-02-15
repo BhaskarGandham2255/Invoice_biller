@@ -76,6 +76,12 @@ public class ItemController {
 	@PostMapping("/updateItem")
 	public String updateItem(@ModelAttribute ItemWithCategoryDTO item, RedirectAttributes redirectAttributes)
 	{
+		Item exists = itemSer.findByName(item.getItemName());
+		if(exists != null)
+		{
+			redirectAttributes.addFlashAttribute("message", "Item with Name " + item.getItemName() + " already exists!");
+		    return "redirect:/item/updateItem?itemId=" + item.getItemId();
+		}
 	    itemSer.updateItem(item); 
 	    redirectAttributes.addFlashAttribute("message", "Item updated successfully!");
 	    return "redirect:/item/items";
