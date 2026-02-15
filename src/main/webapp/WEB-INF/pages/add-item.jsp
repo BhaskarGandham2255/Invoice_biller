@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="d-flex justify-content-between">
-                    <a href="/items" class="btn btn-outline-secondary px-4">Cancel</a>
+                    <a href="/item/items" class="btn btn-outline-secondary px-4">Cancel</a>
                     <button type="submit" class="btn btn-success px-4">Add Item</button>
                 </div>
 
