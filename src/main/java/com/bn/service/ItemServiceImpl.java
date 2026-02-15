@@ -43,7 +43,7 @@ public class ItemServiceImpl implements ItemService {
 	public void saveItem(AddItemRequestDTO item) 
 	{
 		Optional<Category> byId = catRepo.findById(item.getCategoryId());
-		itemRepo.save(new Item(null, item.getItemName(), item.getItemPrice(), item.getItemDescription(), item.getAvailable(), byId.get()));
+		itemRepo.save(new Item(null, item.getItemName(), item.getItemPrice(), item.getItemDescription(), (item.getAvailable() != null ? true : false), byId.get()));
 	}
 
 	@Override
