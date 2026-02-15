@@ -66,5 +66,15 @@ public class ItemController {
 		return "update-item";
 	}
 	
+	@PostMapping("/updateItem")
+	public String updateItem(@ModelAttribute ItemWithCategoryDTO item, RedirectAttributes redirectAttributes)
+	{
+	    itemSer.updateItem(item); 
+	    redirectAttributes.addFlashAttribute("message", "Item updated successfully!");
+	    return "redirect:/item/items";
+	}
+	
+	
+	
 
 }

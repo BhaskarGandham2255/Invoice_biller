@@ -69,5 +69,26 @@ public class ItemServiceImpl implements ItemService {
 		}
 	}
 
+	@Override
+	public void updateItem(ItemWithCategoryDTO item) 
+	{
+		// getting the item from the database using the itemId from the DTO
+		Item existingItem = itemRepo.findById(item.getItemId())
+		        .orElseThrow(() -> new RuntimeException("Item not found with id: " + item.getItemId()));
+		
+		// getting the category from the database using the categoryId from the DTO
+		Category category = catRepo.findById(item.getCategoryId())
+		        .orElseThrow(() -> new RuntimeException("Category not found with id: " + item.getCategoryId()));
+
+		// updating the existing item with the new values from the DTO
+		existingItem.setItemName(item.getItemName());
+		existingItem.setPrice(item.getPrice());
+		existingItem.setDescription(item.getDescription());
+		existingItem.setAvailable((item.getAvailable() != null ? true : false));
+		existingItem.setCategory(category);
+		
+		itemRepo.save(existingItem);
+	}
+
 
 }

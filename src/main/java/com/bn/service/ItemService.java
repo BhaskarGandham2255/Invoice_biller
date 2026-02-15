@@ -14,4 +14,6 @@ public interface ItemService
 	public void deleteItem(Long itemId);
 	
 	public ItemWithCategoryDTO getItemById(Long itemId);
+	
+	public void updateItem(ItemWithCategoryDTO item);
 }
