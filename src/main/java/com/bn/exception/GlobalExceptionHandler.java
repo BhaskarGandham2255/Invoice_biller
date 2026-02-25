@@ -3,6 +3,7 @@ package com.bn.exception;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 @ControllerAdvice
 public class GlobalExceptionHandler 
@@ -13,4 +14,9 @@ public class GlobalExceptionHandler
 	        model.addAttribute("errorMsg", ex.getMessage());
 	        return "error";
 	    }
+
+	@ExceptionHandler(NoHandlerFoundException.class)
+    public String handle404() {
+        return "404";
+    }
 }
