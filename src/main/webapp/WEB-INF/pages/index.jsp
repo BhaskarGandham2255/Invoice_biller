@@ -437,7 +437,7 @@
 
         <!-- Stats Pills -->
         <div class="stats">
-            <div class="stat-pill">
+            <div class="stat-pill" onclick="window.location.href='http://localhost:8080/item/items'" style="cursor:pointer">
                 <div class="stat-icon">🍴</div>
                 <div class="stat-info">
                     <div class="num">${fn:length(items)}</div>
