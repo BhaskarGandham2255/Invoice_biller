@@ -275,7 +275,9 @@ body {
 }
 
 .btn-secondary-act:hover {
-	background: var(--bg);
+	background: var(--orange);
+	color: #fff;
+	
 }
 
 /* ── Table Card ── */
@@ -566,11 +568,15 @@ to {
 			</div>
 			<div class="top-bar-actions">
 				<a href="${pageContext.request.contextPath}/item/addItem"
-					class="btn-action btn-primary-act"> <i class="fa-solid fa-plus"></i>
+					class="btn-action btn-secondary-act add-btn"> <i class="fa-solid fa-plus"></i>
 					Add New Item
 				</a> <a href="${pageContext.request.contextPath}/category/categories"
-					class="btn-action btn-secondary-act"> <i
+					class="btn-action btn-secondary-act categories-btn"> <i
 					class="fa-solid fa-layer-group"></i> Categories
+				</a>
+				<a href="/menu/" 
+					class="btn-action btn-secondary-act home-btn"> <i class="fa-solid fa-house"></i>
+					Home
 				</a>
 			</div>
 		</div>
